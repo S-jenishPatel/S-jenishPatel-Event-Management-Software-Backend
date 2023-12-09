@@ -8,20 +8,20 @@ const getAllUsers = async (req, res) => {
   res.json(users);
 };
 
-const getUserById = async (req, res) => {
-  if (!req?.params?.id) {
+const getUserByUsername = async (req, res) => {
+  if (!req?.params?.username) {
     return res.status(400).json({ message: "ID is required" });
   }
 
-  const user = await Event.findOne({ _id: req.params.id }).exec();
+  const user = await Event.findOne({ _id: req.params.username }).exec();
 
   if (!user) {
     return res
       .status(204)
-      .json({ message: `ID: ${req.params.id} does not match` });
+      .json({ message: `ID: ${req.params.username} does not match` });
   }
 
   res.json(user);
 };
 
-module.exports = { getAllUsers, getUserById };
+module.exports = { getAllUsers, getUserByUsername };
