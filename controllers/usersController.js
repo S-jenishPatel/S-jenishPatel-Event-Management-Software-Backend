@@ -13,7 +13,9 @@ const getUserByUsername = async (req, res) => {
     return res.status(400).json({ message: "ID is required" });
   }
 
-  const user = await Event.findOne({ _id: req.params.username }).exec();
+  const user = await Event.findOne({
+    username: req.params.username,
+  }).exec();
 
   if (!user) {
     return res
