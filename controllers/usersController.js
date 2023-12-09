@@ -14,7 +14,7 @@ const getUserByUsername = async (req, res) => {
   }
 
   const user = await Event.findOne({
-    username: req.params.username,
+    username: toString(req.params.username),
   }).exec();
 
   if (!user) {
