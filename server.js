@@ -34,6 +34,7 @@ app.post("/signup", handleNewUser);
 app.post("/signin", handleSignin);
 
 app.use("/events", require("./routes/events"));
+app.use("/users", require("./routes/users"));
 
 mongoose.connection.once("open", () => {
   console.log("connected to mongoDB");

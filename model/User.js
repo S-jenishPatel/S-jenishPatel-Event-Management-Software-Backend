@@ -28,7 +28,7 @@ const userSchema = new Schema({
     default: false,
   },
   eventsParticipating: {
-    type: [[{ type: String }]],
+    type: [{ type: String }],
   },
 });
 
