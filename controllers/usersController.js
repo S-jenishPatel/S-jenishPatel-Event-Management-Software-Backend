@@ -13,7 +13,7 @@ const getUserById = async (req, res) => {
     return res.status(400).json({ message: "ID is required" });
   }
 
-  const user = await Usere.findOne({ _id: req.params.id }).exec();
+  const user = await User.findOne({ _id: req.params.id }).exec();
 
   if (!user) {
     return res
