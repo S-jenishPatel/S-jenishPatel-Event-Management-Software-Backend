@@ -24,7 +24,6 @@ const eventSchema = new Schema({
   },
   teams: {
     type: [[{ type: String }]],
-    required: true,
   },
 });
 

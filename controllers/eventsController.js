@@ -14,17 +14,17 @@ const createNewEvent = async (req, res) => {
       .status(400)
       .json({ message: "Title and Description are required" });
   }
+  const newEvent = {};
+  if (req.body?.title) newEvent.title = req.body.title;
+  if (req.body?.description) newEvent.description = req.body.description;
+  if (req.body?.typeOfEvent) newEvent.typeOfEvent = req.body.typeOfEvent;
+  if (req.body?.date) newEvent.date = req.body.date;
+  if (req.body?.maxMembers) newEvent.maxMembers = req.body.maxMembers;
+  if (req.body?.imageURL) newEvent.imageURL = req.body.imageURL;
+  if (req.body?.teams) newEvent.teams = req.body.teams;
 
   try {
-    const result = await Event.create({
-      title: req.body.title,
-      description: req.body.description,
-      typeOfEvent: req.body.typeOfEvent,
-      date: req.body.date,
-      maxMembers: req.body.maxMembers,
-      imageURL: req.body.imageURL,
-      teams: req.body.teams,
-    });
+    const result = await Event.create(newEvent);
 
     res.status(201).json({ success: true });
   } catch (error) {

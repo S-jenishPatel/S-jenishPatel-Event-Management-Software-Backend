@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+const bodyParser = require("body-parser");
+
 const path = require("path");
 const handleNewUser = require("./controllers/signupController");
 const handleSignin = require("./controllers/signinController");
@@ -19,10 +21,11 @@ connectDB();
 //cross-origin resource sharer
 app.use(cors());
 
-//access form-data
-app.use(express.urlencoded({ extended: false }));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.json());
+// parse application/json
+app.use(bodyParser.json());
 
 app.use("/", express.static(path.join(__dirname, "public")));
 
