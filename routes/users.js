@@ -4,6 +4,6 @@ const { getAllUsers, getUserById } = require("../controllers/usersController");
 
 router.route("/").get(getAllUsers);
 
-router.route("/:username").get(getUserById);
+router.route("/:id").get(getUserById);
 
 module.exports = router;
